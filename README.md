@@ -1,14 +1,8 @@
-# Contents
-
-* Introduction
-* Recreation
-* Database schema
-* Anonymisation
-* Software and studies
-
-# Introduction
+# Nodobo Release
 
 Nodobo-2011-01-v1 is the data gathered during a study of the mobile phone usage of 27 high-school students, from September 2010 to February 2011. This dataset includes 13035 call records, 83542 message records, 5292103 presence records, and other related data.
+
+![](http://github.com/alisdair/nodobo-release/raw/master/img/nodobo-social.png)
 
 All code in this release is licensed under the terms in LICENSE.txt. We ask that if you use this dataset for research, you cite the most relevant Nodobo publication available. You can find a list of our publications on our website at:
 
@@ -16,12 +10,12 @@ All code in this release is licensed under the terms in LICENSE.txt. We ask that
 
 If you have any questions, or if you find any bugs in the code or discrepancies in the data, please contact us through the website.
 
-Alisdair McDiarmid <alisdair@mcdiarmid.org>
-James Irvine <j.m.irvine@strath.ac.uk>
+Alisdair McDiarmid &lt;alisdair@mcdiarmid.org&gt;
+James Irvine &lt;j.m.irvine@strath.ac.uk&gt;  
 University of Strathclyde
 
 
-# Recreation
+## Recreation
 
 db.sqlite3.dump.bz2 is a bzipped SQL dump of the sqlite3 database. You can recreate the database by doing the following:
 
@@ -30,45 +24,45 @@ db.sqlite3.dump.bz2 is a bzipped SQL dump of the sqlite3 database. You can recre
 The resulting db.sqlite3 file will be approximately 1GB. We have prepared a Ruby interface for this dataset, which enables casual investigation of the data. More details on using this are in the section on "nodobo.rb" below.
 
 
-# Database schema
+## Database schema
 
 The following tables are used:
 
-## Calls and Messages
+### Calls and Messages
 
 * other_id: id of the other user on the call (NULL if not in the study)
 * number: phone number of the other end of the call/message (related: Users#number)
 * duration: length of the call in seconds
 * length: number of characters in the message
 
-## CellTowers
+### CellTowers
 
 * cellid: GSM base transceiver station CID
 * lac: location area code
 
-## Devices
+### Devices
 
 * imei: blank for this release of the data
 * mac: Bluetooth MAC (related: Presences#mac)
 
-## Presences
+### Presences
 
 * other_id: user_id of the detected device (NULL if not in the study)
 * mac: Bluetooth MAC (related: Devices#mac)
 * bluetooth_class: reported class of the device
 * name: human-readable name of the device
 
-## Users
+### Users
 
 * name: "Anonymous" for this release of the data
 * number: phone number of the study user (related: Calls#number, Messages#number)
 
-## Wifis
+### Wifis
 
 * ssid: human-readable name of the base station
 * bssid: base station MAC
 
-## All tables
+### All tables
 
 * The database schema follows ActiveRecord conventions: tables are plurals, foreign keys are singular_id, each table has an id primary key and created_at/updated_at timestamps.
 
@@ -79,7 +73,7 @@ The following tables are used:
 * Some tables have an "interaction" column. This was used for database synchronising and is left in for internal debugging purposes.
 
 
-# Anonymisation
+## Anonymisation
 
 This section of the document describes how we transformed the data to anonymise its contents.
 
@@ -102,12 +96,12 @@ Each real value for these fields maps 1:1 to a randomly-generated anonymous valu
 * Bluetooth name/Wifi ssid: random sequence of dictionary words, same number of words as original name
 * Cell ID and LAC: random number with the same number of digits
 
-## Location Information
+### Location Information
 
 For this release of the data, we have been fairly cautious about data anonymisation. In the future we may release the real CID/LAC/BSSID information, to better allow location and movement patterns to be estimated.
 
 
-# Software and studies
+## Software and studies
 
 Also included in the dataset download are programs for three sample studies. These are detailed below.
 
@@ -120,7 +114,7 @@ Software used:
 * GraphViz 2.22
 
 
-## Ruby interface: nodobo.rb
+### Ruby interface: nodobo.rb
 
 We have supplied a simple ActiveRecord interface to the database, "nodobo.rb". This gives classes and relations for each of the types of data in the dataset.
 
@@ -142,21 +136,21 @@ The interface can be used by running "irb -r ./nodobo.rb", or by using "require 
 Note that this interface is not particularly efficient, and is intended for basic exploration of the data. We have added indices to the database to improve performance where possible, but many computations (especially those involving presence data) still require significant CPU time.
 
 
-## Conversation Length
+### Conversation Length
 
 This study examines the number of messages in an SMS conversation. A recent publication with a smaller dataset found that most SMS conversations are two messages long, with the number of conversations rapidly decreasing as the conversation length increases. Our data reproduces this result.
 
 Results are output to the csv directory, and plots can be shown with "gnuplot conversation-length.gnuplot".
 
 
-## Daily/Hourly Stats
+### Daily/Hourly Stats
 
 We binned calls, messages, and presence by hours of the day and days of the week. This shows how the study users use different aspects of their phones.
 
 Results are output to the csv directory, and plots can be shown with "gnuplot daily-hourly-stats.gnuplot".
 
 
-## Dichotomous Social Graph
+### Dichotomous Social Graph
 
 Our most complex program is an initial attempt to estimate the social graph of the study users. This is achieved by using three dichotomous links between users: one each for calls, messages, and presence.
 
