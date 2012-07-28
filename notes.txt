@@ -1,0 +1,35 @@
+# User 19
+
+User 19 lost the phone on December 17th 2010. No further records exist
+since then.
+
+# User 26
+
+User 26's device appears to have a severe malfunction. This is
+particularly unfortunate because this user made a large number of
+calls and text messages.
+
+The user's self-report indicates problems with the phone, and
+study-wide call and message corroboration results support this. Of
+those recorded by user 26, most calls (67%) and messages (87%) were
+corroborated by the other user. Conversely, of the calls and messages
+recorded by others, user 26 only corroborated 17% and 48%
+respectively.
+
+# Users leaving the study
+
+User 4 elected to leave the study due to a malfunctioning phone. This
+user's data ends on 2010-10-18, and is unreliable before then.
+
+User 23 unfortunately had two broken phones in a row, and chose to
+leave the study. This user's data ends on 2010-09-22 with almost no
+data recorded.
+
+User 16 left the study, switching to a new phone. This user's data
+ends on 2010-12-04.
+
+# Users leaving school
+
+Users 2, 10, 18, 20, and 25 left school at the end of 2010. Many of
+these users continued to use the phones, but presence data patterns
+may have changed due to non-attendance of school.
