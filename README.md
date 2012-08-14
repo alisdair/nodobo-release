@@ -10,7 +10,7 @@ All code in this release is licensed under the terms in LICENSE.txt. We ask that
 
 If you have any questions, or if you find any bugs in the code or discrepancies in the data, please contact us through the website.
 
-Alisdair McDiarmid &lt;alisdair@mcdiarmid.org&gt;
+Alisdair McDiarmid &lt;alisdair@mcdiarmid.org&gt;  
 James Irvine &lt;j.m.irvine@strath.ac.uk&gt;  
 University of Strathclyde
 
